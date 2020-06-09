@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+Script used to define the Model
+@author : Anant
+"""
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -11,12 +17,15 @@ import torch.nn.functional as F
 #FC Layer 2 (128)
 #Output Layer (10)
 
-
+#Final image size before FC layer
 FLATTEN_SIZE = 64*7*7
 
 
 class CNN(nn.Module):
     def __init__(self):
+        """
+        Initializes the CNN Model Class and the required layers
+        """
         super(CNN, self).__init__()
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1, stride=1)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1, stride=1)
@@ -26,6 +35,10 @@ class CNN(nn.Module):
         self.dropout = nn.Dropout(0.25)
 
     def forward(self, x):
+        """
+        Form the Feed Forward Network by combininig all the layers
+        :param x: the input image for the network
+        """
         x = F.relu(self.conv1(x))
         x = self.pool(x)
         x = F.relu(self.conv2(x))
