@@ -31,7 +31,7 @@ Federated Learning model can be trained using.
 python3 train_federated.py
 ```
 ## Results:
-The model is trained for 10 epochs for both baseline and federated model (3 clientsa and 2 local iterations each) and the Test accuracy is reported as,
+The model is trained for 10 epochs for both baseline and federated model (3 clients and 2 local iterations each) and the Test accuracy is reported as,
 
 | Dataset        | Federated           | Baseline  |
 | ------------- |:-------------:| -----:|
@@ -42,11 +42,11 @@ The loss plots for all the models are displayed below,
 
 ### MNIST
  
-Baseline Model            |  Federated Learning Model
+Federated Learning Model            | Baseline Model
 :-------------------------:|:-------------------------:
-![](https://github.com/ashar207/Federated-Learning/blob/master/results/mbase.png)  |  ![](https://github.com/ashar207/Federated-Learning/blob/master/results/mfed.png)
+![](https://github.com/ashar207/Federated-Learning/blob/master/results/mfed.png)  |  ![](https://github.com/ashar207/Federated-Learning/blob/master/results/mbase.png)
 
 ### Fashion MNIST
-Baseline Model            |  Federated Learning Model
+Federated Learning Model            |  Baseline Model
 :-------------------------:|:-------------------------:
-![](https://github.com/ashar207/Federated-Learning/blob/master/results/fbase.png)  |  ![](https://github.com/ashar207/Federated-Learning/blob/master/results/ffed.png)
+![](https://github.com/ashar207/Federated-Learning/blob/master/results/ffed.png)  |  ![](https://github.com/ashar207/Federated-Learning/blob/master/results/fbase.png)
