@@ -18,12 +18,12 @@ NUM_EPOCHS = 10
 LOCAL_ITERS = 2
 VIS_DATA = False
 BATCH_SIZE = 5
-NUM_CLIENTS = 3
+NUM_CLIENTS = 2
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Device:', DEVICE)
 
-DATASET = "fashion_mnist"
-# DATASET = "mnist"
+# DATASET = "fashion_mnist"
+DATASET = "mnist"
 
 def FedAvg(params):
     """
@@ -31,9 +31,9 @@ def FedAvg(params):
     :param params: list of paramters from each client's model
     :return global_params: average of paramters from each client
     """
-    global_params = dict(params[0])
+    global_params = copy.deepcopy(params[0])
     for key in global_params.keys():
-        for param in params:
+        for param in params[1:]:
             global_params[key] += param[key]
         global_params[key] = torch.div(global_params[key], len(params))
     return global_params
@@ -48,12 +48,12 @@ def train(local_model, device, dataset, iters):
     :return local_params: parameters from the trained model from the client
     :return train_loss: training loss for the current epoch
     """    
-    #criterion and  optimzer for training the local models
-    criterion = torch.nn.CrossEntropyLoss()
+    #optimzer for training the local models
+    local_model.to(device)
+    criterion = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(local_model.parameters(), lr=0.001)
     train_loss = 0.0
     local_model.train()
-
     #Iterate for the given number of Client Iterations
     for i in range(iters):
         batch_loss = 0.0
@@ -71,7 +71,7 @@ def train(local_model, device, dataset, iters):
             #Update local model
             optimizer.step()
         #add loss for each iteration
-        train_loss+=(batch_loss/len(dataset))
+        train_loss+=batch_loss/len(dataset)
     return local_model.state_dict(), train_loss/iters
 
 
@@ -84,12 +84,12 @@ def test(model, dataloader):
     :return preds: predictions for the given dataset
     :return accuracy: accuracy for the prediction values from the model
     """    
+    criterion = torch.nn.CrossEntropyLoss()
     test_loss = 0.0
     correct = 0
-    criterion = torch.nn.CrossEntropyLoss()
     model.eval()
     for batch_idx, (data, target) in tqdm(enumerate(dataloader), total=len(dataloader.dataset)/BATCH_SIZE):
-        data, target = data.to(DEVICE), target.to(DEVICE)
+        data, target = data, target
         output = model(data)
         loss = criterion(output, target)
         test_loss += loss.item()*data.size(0)
@@ -107,7 +107,7 @@ if __name__=="__main__":
         os.mkdir('results')
     
     #Initialize a logger to log epoch results
-    logname = ('results/log_federated_' + DATASET + "_" + str(NUM_EPOCHS))
+    logname = ('results/log_federated_' + DATASET + "_" + str(NUM_EPOCHS) +"_"+ str(NUM_CLIENTS) + "_" + str(LOCAL_ITERS))
     logging.basicConfig(filename=logname,level=logging.DEBUG)
     logger = logging.getLogger()
     
@@ -121,11 +121,11 @@ if __name__=="__main__":
     for batch_idx, (data,target) in enumerate(train_data):
         train_distributed_dataset[batch_idx % NUM_CLIENTS].append((data, target))
     
-    #get model
-    global_model = CNN().to(DEVICE)
-    global_model.train()
+    #get model and define criterion for loss
+    global_model = CNN()
     global_params = global_model.state_dict()
-
+    
+    global_model.train()
     all_train_loss = list()
     all_val_loss = list()
     val_loss_min = np.Inf
@@ -158,10 +158,10 @@ if __name__=="__main__":
         if val_loss < val_loss_min:
             val_loss_min = val_loss
             logger.info("Saving Model State")
-            torch.save(global_model.state_dict(), "models/mnist_federated.sav")
+            torch.save(global_model.state_dict(), "models/" + DATASET + "_" + str(NUM_CLIENTS) + "_federated.sav")
     
     #load the best model from training
-    global_model.load_state_dict(torch.load("models/mnist_federated.sav"))
+    global_model.load_state_dict(torch.load("models/"+ DATASET + "_" + str(NUM_CLIENTS) + "_federated.sav"))
     #test the model using test data
     test_loss, predictions, accuracy = test(global_model, test_data)
     logger.info('Test accuracy {:.8f}'.format(accuracy))

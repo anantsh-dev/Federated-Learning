@@ -1,14 +1,15 @@
-INFO:root:Epoch: 1/10, Train Loss: 0.43941673, Val Loss: 0.30535036, Val Accuracy: 0.88458333
+INFO:root:Epoch: 1/10, Train Loss: 0.44149528, Val Loss: 0.30370722, Val Accuracy: 0.88875000
 INFO:root:Saving Model State
-INFO:root:Epoch: 2/10, Train Loss: 0.29114755, Val Loss: 0.26321681, Val Accuracy: 0.90166667
+INFO:root:Epoch: 2/10, Train Loss: 0.29181354, Val Loss: 0.26328902, Val Accuracy: 0.90141667
 INFO:root:Saving Model State
-INFO:root:Epoch: 3/10, Train Loss: 0.24903628, Val Loss: 0.26364643, Val Accuracy: 0.90158333
-INFO:root:Epoch: 4/10, Train Loss: 0.22040532, Val Loss: 0.26533946, Val Accuracy: 0.90325000
-INFO:root:Epoch: 5/10, Train Loss: 0.19625866, Val Loss: 0.26133947, Val Accuracy: 0.90833333
+INFO:root:Epoch: 3/10, Train Loss: 0.24913410, Val Loss: 0.25483956, Val Accuracy: 0.90416667
 INFO:root:Saving Model State
-INFO:root:Epoch: 6/10, Train Loss: 0.17893467, Val Loss: 0.27067723, Val Accuracy: 0.90766667
-INFO:root:Epoch: 7/10, Train Loss: 0.16542898, Val Loss: 0.27838512, Val Accuracy: 0.90950000
-INFO:root:Epoch: 8/10, Train Loss: 0.15053454, Val Loss: 0.29483051, Val Accuracy: 0.90475000
-INFO:root:Epoch: 9/10, Train Loss: 0.14507456, Val Loss: 0.30587472, Val Accuracy: 0.90516667
-INFO:root:Epoch: 10/10, Train Loss: 0.13655799, Val Loss: 0.32760388, Val Accuracy: 0.90666667
-INFO:root:Test accuracy 0.90820000
+INFO:root:Epoch: 4/10, Train Loss: 0.22293655, Val Loss: 0.26677265, Val Accuracy: 0.90933333
+INFO:root:Epoch: 5/10, Train Loss: 0.20077494, Val Loss: 0.25017438, Val Accuracy: 0.91216667
+INFO:root:Saving Model State
+INFO:root:Epoch: 6/10, Train Loss: 0.18448148, Val Loss: 0.29715600, Val Accuracy: 0.91008333
+INFO:root:Epoch: 7/10, Train Loss: 0.16638099, Val Loss: 0.29874967, Val Accuracy: 0.91100000
+INFO:root:Epoch: 8/10, Train Loss: 0.15970705, Val Loss: 0.33128412, Val Accuracy: 0.91100000
+INFO:root:Epoch: 9/10, Train Loss: 0.15334789, Val Loss: 0.36495166, Val Accuracy: 0.91033333
+INFO:root:Epoch: 10/10, Train Loss: 0.14396968, Val Loss: 0.38900903, Val Accuracy: 0.90633333
+INFO:root:Test accuracy 0.90710000

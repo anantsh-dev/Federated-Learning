@@ -1,0 +1,15 @@
+INFO:root:Epoch: 1/10, Train Loss: 0.85636063, Val Loss: 0.14035963, Val Accuracy: 0.98066667
+INFO:root:Saving Model State
+INFO:root:Epoch: 2/10, Train Loss: 0.35715060, Val Loss: 0.04148094, Val Accuracy: 0.98816667
+INFO:root:Saving Model State
+INFO:root:Epoch: 3/10, Train Loss: 0.22336485, Val Loss: 0.03867630, Val Accuracy: 0.98933333
+INFO:root:Saving Model State
+INFO:root:Epoch: 4/10, Train Loss: 0.17369942, Val Loss: 0.03683914, Val Accuracy: 0.99041667
+INFO:root:Saving Model State
+INFO:root:Epoch: 5/10, Train Loss: 0.14026766, Val Loss: 0.04028376, Val Accuracy: 0.99050000
+INFO:root:Epoch: 6/10, Train Loss: 0.11820753, Val Loss: 0.03946097, Val Accuracy: 0.99058333
+INFO:root:Epoch: 7/10, Train Loss: 0.10293075, Val Loss: 0.04052444, Val Accuracy: 0.99033333
+INFO:root:Epoch: 8/10, Train Loss: 0.09973919, Val Loss: 0.04512742, Val Accuracy: 0.99041667
+INFO:root:Epoch: 9/10, Train Loss: 0.08614432, Val Loss: 0.05164980, Val Accuracy: 0.99100000
+INFO:root:Epoch: 10/10, Train Loss: 0.07863043, Val Loss: 0.04251062, Val Accuracy: 0.99125000
+INFO:root:Test accuracy 0.99130000
